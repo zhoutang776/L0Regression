@@ -216,7 +216,7 @@ class L0Regression:
         ub_Xcoef_1 = np.nanmin([ub_Xcoef_1_1, ub_Xcoef_1_2, ub_Xcoef_1_3])
         ub_Xcoef_inf = np.nanmin([ub_Xcoef_inf_1, ub_Xcoef_inf_2, ub_Xcoef_inf_3])
 
-        print(ub_coef_1, ub_coef_inf, ub_Xcoef_1, ub_Xcoef_inf)
+        # print(ub_coef_1, ub_coef_inf, ub_Xcoef_1, ub_Xcoef_inf)
 
         # infinity norm constraint
         for i in range(num_var):
@@ -378,10 +378,7 @@ if __name__ == "__main__":
     beta[[1, 2, 3]] = 1
     error = rng.randn(n, 1)
     y = np.dot(np.concatenate([np.ones((n, 1)), X], axis=1), beta) + error
-
-    # sum(np.abs(X @ beta + 3))
-
-    model = L0Regression(fit_intercept=False, verbose=True).fit(X, y, k=3)
+    model = L0Regression(verbose=False).fit(X, y, k=3)
     print(model.intercept_, model.coef_)
 
 
